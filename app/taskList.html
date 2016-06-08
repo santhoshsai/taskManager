@@ -1,0 +1,26 @@
+<div ng-controller="taskLists">
+This is Task List
+<table class="table table-hover">
+	<tr>
+		<th>S.no`</th>
+		<th>Task Name</th>
+		<th>Days Remaining</th>
+		<th>Start and End Date</th>
+		<th>Task Status</th>
+	</tr>
+	<tr ng-repeat="tasklist in myData">
+		<td>{{$index+1}}</td>
+		<td>{{tasklist.taskName}}</td>
+		<td>{{tasklist.dateDiff}}</td>
+		<td>{{tasklist.StartDate | date:'dd-MMM-yy' }}' to {{ tasklist.endDate | date:'dd-MMM-yy' }}</td>
+		<td>Inactive</td>
+	</tr>
+</table>
+<!--<div ng-repeat="tasklist in myData" style="border:solid red 2px;">
+		
+		<div>{{tasklist.taskName}}</div>
+		<div>{{tasklist.StartDate}}</div>
+		<div>{{tasklist.endDate}}</div>
+		<div>{{tasklist.taskDescription}}</div>
+	</div>
+</div>-->
