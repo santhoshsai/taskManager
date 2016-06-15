@@ -17,3 +17,12 @@ div.tab a{
 	background-color:#d3f944;
 	padding:5px;
 }
+.red{
+	color:red;
+}
+.green{
+	color:green;
+}
+table th,td{
+	text-align:center;
+}
