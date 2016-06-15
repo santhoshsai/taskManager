@@ -1,30 +1,25 @@
 var myTaskManagerApp = angular.module('myTaskManagerTabsApp',['ngRoute']);
 
 myTaskManagerApp.config(function($routeProvider) {
-        $routeProvider
-            // route for the home page
-            .when('/taskList', {
-                templateUrl : 'app/taskList.html',
+        $routeProvider.
+            when('/taskList', {
+	    templateUrl : 'app/taskList.html',
                 controller  : 'taskLists'
-            })
-
-            // route for the about page
-            .when('/createTask', {
+            }).
+            when('/createTask', {
                 templateUrl : 'app/createTask.html'
                // controller  : 'aboutController'
-            })
-
-            // route for the contact page
-            .when('/manageTask', {
+            }).
+            when('/manageTask', {
                 templateUrl : 'app/manageTask.html'
                // controller  : 'contactController'
             }).
-				otherwise({redirectTo: '/taskLists'})
-                });
+				otherwise({redirectTo: '/taskList'});
+            });
+
 	myTaskManagerApp.controller('myTabs',function($scope, $location){
 				    $scope.isActive = function (viewLocation)
 					{
-						console.log(viewLocation);
 						return viewLocation === $location.path();
 					};
 				});
@@ -36,4 +31,24 @@ myTaskManagerApp.config(function($routeProvider) {
 							alert('test');
 						}     
 				});
+				$scope.taskStatus = function(days){
+					
+					return (days > 10) ?"active":"danger";
+				}
+				$scope.statusIcon = function(days)
+				{
+						return (days > 0) ?"fa fa-check green":"fa fa-remove red";
+					//{true:'fa fa-check', false:'fa fa-remove'}[{{tasklist.dateDiffInt}} > 0]
+				}
+				$scope.createTask = "ng-hide";	
+				$scope.newTask = function(){
+					if($scope.displayStatus)
+					{
+						$scope.createTask = "ng-show";
+					}
+					else
+					{
+						$scope.createTask = "ng-hide";
+					}
+				}
 		});
